@@ -35,7 +35,13 @@ class EasyAccessDict:
 
     def get(self, key, default=None):
         try:
-            return self.clean_data[key]
+            value = self.clean_data[key]
+
+            if isinstance(value, (dict, list)):
+                return EasyAccessDict(value)
+
+            return value
+
         except KeyError:
             return default
 
