@@ -1,6 +1,6 @@
 import pytest
 
-from data_structures import EasyAccessDict, EasyDictError
+from easy_dict import EasyAccessDict, EasyDictError
 
 
 def test_easy_dict():

@@ -6,8 +6,11 @@ class EasyDictError(Exception):
 
 
 class EasyAccessDict:
-    def __init__(self, raw_data):
-        self.raw_data = deepcopy(raw_data)
+    def __init__(self, raw_data, make_copy=True):
+        if make_copy:
+            self.raw_data = deepcopy(raw_data)
+        else:
+            self.raw_data = raw_data
 
         if isinstance(self.raw_data, list):
             self.clean_data = [EasyAccessDict(v) if isinstance(v, dict) else v for v in self.raw_data]
